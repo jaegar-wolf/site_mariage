@@ -1,0 +1,119 @@
+/* color palette from <https://github.com/vuejs/theme> */
+@import url('https://fonts.googleapis.com/css2?family=Dynalight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-dynalight: 'Dynalight', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-plusjakartasans: 'Plus Jakarta Sans', sans-serif;
+  --font-forum: 'Forum', sans-serif;
+}
+
+@plugin "daisyui" {
+  themes: light;
+}
+
+@plugin "daisyui/theme" {
+  name: 'light';
+  default: true;
+  prefersdark: false;
+  color-scheme: 'light';
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: #fffcf8;
+  --color-base-300: #fffcf8;
+  --color-base-content: #7f8d74;
+  --color-primary: #7f8d74;
+  --color-primary-content: oklch(98% 0.001 106.423);
+  --color-secondary: oklch(90% 0.063 306.703);
+  --color-secondary-content: oklch(97% 0.014 343.198);
+  --color-accent: oklch(71% 0.203 305.504);
+  --color-accent-content: oklch(98% 0.026 102.212);
+  --color-neutral: oklch(81% 0.111 293.571);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: #596351;
+  --color-info-content: oklch(100% 0 0);
+  --color-success: #7f8d74;
+  --color-success-content: oklch(100% 0 0);
+  --color-warning: oklch(76% 0.188 70.08);
+  --color-warning-content: oklch(27% 0.077 45.635);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(25% 0.092 26.042);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
+
+/* @plugin "daisyui/theme" {
+  name: 'light';
+  default: true;
+  prefersdark: false;
+  color-scheme: 'light';
+  --color-base-100: oklch(98% 0.014 180.72);
+  --color-base-200: oklch(100% 0 0);
+  --color-base-300: oklch(95% 0.052 163.051);
+  --color-base-content: oklch(40% 0.17 325.612);
+  --color-primary: oklch(76% 0.177 163.223);
+  --color-primary-content: oklch(98% 0.001 106.423);
+  --color-secondary: oklch(71% 0.203 305.504);
+  --color-secondary-content: oklch(97% 0.014 343.198);
+  --color-accent: oklch(74% 0.238 322.16);
+  --color-accent-content: oklch(98% 0.026 102.212);
+  --color-neutral: oklch(81% 0.111 293.571);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: oklch(87% 0.065 274.039);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(79% 0.209 151.711);
+  --color-success-content: oklch(27% 0.046 192.524);
+  --color-warning: oklch(76% 0.188 70.08);
+  --color-warning-content: oklch(27% 0.077 45.635);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(25% 0.092 26.042);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+} */
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+} */
+
+body {
+  min-height: 100vh;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
