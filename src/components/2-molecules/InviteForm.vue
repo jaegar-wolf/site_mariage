@@ -17,7 +17,9 @@ const sendData = () => {
 
 <template>
   <div class="bg-primary w-dvw flex flex-col items-center">
-    <div class="text-6xl text-center font-forum mt-20 text-base-200">SOYEZ NOTRE INVITÉ</div>
+    <div id="rsvp" class="text-6xl text-center font-forum mt-20 text-base-200">
+      SOYEZ NOTRE INVITÉ
+    </div>
     <div class="my-6 font-plusjakartasans text-[16px] text-base-200">
       Your kind respond in requested by August twentieth, 2024
     </div>

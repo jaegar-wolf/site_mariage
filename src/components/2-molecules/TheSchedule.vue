@@ -50,7 +50,7 @@ const scheduleList: SchedulePartProps[] = [
 </script>
 
 <template>
-  <div>
+  <div id="schedule">
     <template v-for="(schedulePart, index) in scheduleList">
       <template v-if="!(index % 2)">
         <SchedulePartOdd

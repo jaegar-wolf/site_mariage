@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Countdown from '@/components/1-atoms/Countdown.vue'
+import Countdown from '@/components/1-atoms/CountdownComponent.vue'
 
 import { onMounted, onUnmounted, reactive, ref } from 'vue'
 import { gsap } from 'gsap'

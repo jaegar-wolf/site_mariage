@@ -2,10 +2,13 @@
 import HeartSvg from '@/assets/svg/heartSvg.vue'
 import inviteCardUs from '@/assets/images/inviteCardUs.jpeg'
 import WeddingRing from '@/assets/svg/WeddingRing.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 </script>
 
 <template>
-  <div class="h-200 w-full my-20 relative flex">
+  <div id="invite" class="h-200 w-full my-20 relative flex">
     <div class="h-full min-w-50 w-1/2">
       <img :src="inviteCardUs" class="size-full" />
     </div>
@@ -29,7 +32,9 @@ import WeddingRing from '@/assets/svg/WeddingRing.vue'
 
       <div class="font-forum text-primary text-[1.25rem]">L'étoile de Forge, Longmesnil</div>
 
-      <button class="btn btn-neutral btn-lg z-10">Rejoignez-nous</button>
+      <button class="btn btn-neutral btn-lg z-10" @click="router.push('#rsvp')">
+        Rejoignez-nous
+      </button>
     </div>
     <div class="size-95/100 border-2 border-neutral absolute top-5 left-5">
       <div class="size-full border-2 border-neutral rotate-2 relative">

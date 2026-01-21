@@ -2,8 +2,10 @@
 import FlowerForSchedule from '@/assets/svg/flowerForSchedule.vue'
 import pinnedHeartSvg from '@/assets/svg/pinnedHeartSvg.vue'
 import type { SchedulePartProps } from '@/types'
+import { useRouter } from 'vue-router'
 
 defineProps<SchedulePartProps>()
+const router = useRouter()
 </script>
 
 <template>
@@ -41,7 +43,10 @@ defineProps<SchedulePartProps>()
           </div>
         </div>
 
-        <button class="btn btn-outline w-1/3 mt-4 font-plusjakartasans text-base">
+        <button
+          class="btn btn-outline w-1/3 mt-4 font-plusjakartasans text-base"
+          @click="router.push('#rsvp')"
+        >
           Rejoignez-nous
         </button>
       </div>

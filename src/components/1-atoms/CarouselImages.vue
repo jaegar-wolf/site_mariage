@@ -5,25 +5,31 @@ defineProps({
 </script>
 
 <template>
-  <div class="my-carousel rounded-box">
-    <div class="group">
-      <div v-for="(image, index) in carouselImages" :key="index" class="card h-72">
-        <img class="rounded-2xl h-full" :src="image.img" :alt="image.alt" />
+  <div class="wrapper">
+    <div class="my-carousel rounded-box">
+      <div class="group">
+        <div v-for="(image, index) in carouselImages" :key="index" class="card h-72">
+          <img class="rounded-2xl h-full" :src="image.img" :alt="image.alt" />
+        </div>
       </div>
-    </div>
-    <div aria-hidden class="group">
-      <div v-for="(image, index) in carouselImages" :key="index" class="card h-72">
-        <img class="rounded-2xl h-full" :src="image.img" :alt="image.alt" />
+      <div aria-hidden class="group">
+        <div v-for="(image, index) in carouselImages" :key="index" class="card h-72">
+          <img class="rounded-2xl h-full" :src="image.img" :alt="image.alt" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.wrapper {
+  width: 100vw;
+  overflow-x: hidden; /* Cache le débordement */
+  position: relative;
+}
 .my-carousel {
   width: 120%;
   display: flex;
-  overflow-x: auto;
 }
 
 .my-carousel::-webkit-scrollbar {

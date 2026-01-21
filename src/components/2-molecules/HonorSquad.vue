@@ -106,7 +106,7 @@ useObserver(honorSquadList, honorSquadListRef, defaultHonorSquadList, [])
 
 <template>
   <div class="flex flex-col items-center min-h-400">
-    <div class="font-forum text-primary text-[64px] text-center">
+    <div id="honorSquad" class="font-forum text-primary text-[64px] text-center">
       C'EST LE MOMENT DE BRILLER GRÂCE À EUX
     </div>
     <div class="w-full min-h-110 flex flex-col items-center" ref="witnessSquad">

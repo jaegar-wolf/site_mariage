@@ -23,7 +23,7 @@ const labelToMajusc = computed(() =>
     v-for="link in labelToMajusc"
     :key="link.path"
     :to="link.path"
-    class="btn btn-ghost text-base font-medium group relative overflow-hidden hover:text-white transition-colors duration-300"
+    class="btn btn-ghost text-sm font-medium group relative overflow-hidden hover:text-white transition-colors duration-300"
     :class="route.path === link.path ? activeClass : inactiveClass"
   >
     {{ link.label }}

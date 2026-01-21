@@ -7,14 +7,14 @@ const route = useRoute()
 
 const leftLinks = [
   { path: '/', label: 'Accueil' },
-  { path: '/our-story', label: 'Notre Histoire' },
-  { path: '/about', label: 'Infos' },
+  { path: '#ourStory', label: 'Notre Histoire' },
+  { path: '#honorSquad', label: 'Nos amis' },
 ]
 
 const rightLinks = [
-  { path: '/programme', label: 'Programme' },
-  { path: '/rsvp', label: 'RSVP' },
-  { path: '/galerie', label: 'Galerie' },
+  { path: '#schedule', label: 'Programme' },
+  { path: '#dressCode', label: 'Dress code' },
+  { path: '#invite', label: 'Invitation' },
 ]
 </script>
 

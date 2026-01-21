@@ -55,12 +55,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center h-210 w-full">
+  <div id="dressCode" class="flex flex-col items-center h-210 w-full">
     <div class="mb-5">
       <div class="font-plusjakartasans text-sm text-primary text-center">CHAMPÊTRE</div>
       <div class="font-forum text-[4.19rem]">DRESS CODE DES INVITÉS</div>
     </div>
-    <div class="text-neutral w-full md:w-[120%] h-full">
+    <div class="text-neutral w-full md:w-[110%] h-full">
       <img :src="dresscodeBackgroundSvg" />
       <DressCodeBackgroundSvg />
     </div>

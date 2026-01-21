@@ -74,7 +74,7 @@ const goRight = () => {
 
 <template>
   <div class="h-210 flex flex-col items-center">
-    <div class="font-plusjakartasans text-sm text-primary">NOTRE HISTOIRE</div>
+    <div id="ourStory" class="font-plusjakartasans text-sm text-primary">NOTRE HISTOIRE</div>
     <div class="font-forum text-primary text-[64px] text-center">
       TOUT A COMMECÉ AU COLLÈGE PAUL SYMPHOR, VOICI NOTRE HISTOIRE
     </div>
