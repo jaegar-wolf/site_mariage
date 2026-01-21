@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import brideMaid1 from '@/assets/images/brideMaid1.avif'
-import brideMaid2 from '@/assets/images/brideMaid2.avif'
-import brideMaid3 from '@/assets/images/brideMaid3.avif'
+import brideMaid1 from '@/assets/images/brideMaid1.jpg'
+import brideMaid2 from '@/assets/images/brideMaid2.jpg'
+import brideMaid3 from '@/assets/images/brideMaid3.jpg'
 import groomMen1 from '@/assets/images/groomMen1.avif'
 import groomMen2 from '@/assets/images/groomMen2.avif'
 import groomMen3 from '@/assets/images/groomMen3.avif'

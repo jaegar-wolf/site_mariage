@@ -7,18 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    vue({
-      template: {
-        transformAssetUrls: {
-          includeAbsolute: false,
-        },
-      },
-    }),
-    ,
-    vueDevTools(),
-  ],
+  plugins: [tailwindcss(), vue(), vueDevTools()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
