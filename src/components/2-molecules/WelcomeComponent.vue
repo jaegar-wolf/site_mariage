@@ -35,11 +35,11 @@ onMounted(() => {
   <div class="flex flex-col gap-5 items-center font-plusjakartasans" ref="animatedText">
     <div class="flex-row">Rejoignez-nous pour célébrer notre mariage</div>
     <div class="flex flex-row gap-4 items-center">
-      <span class="font-dynalight text-neutral text-9xl font-normal">Mathieu</span>
+      <span class="font-dynalight text-primary text-9xl font-normal">Mathieu</span>
       <div class="w-14 h-14">
         <WeddingRing />
       </div>
-      <span class="font-dynalight text-neutral text-9xl font-normal">Mélanie</span>
+      <span class="font-dynalight text-primary text-9xl font-normal">Mélanie</span>
     </div>
   </div>
 </template>
