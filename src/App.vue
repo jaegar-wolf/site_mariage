@@ -4,7 +4,7 @@ import InviteForm from './components/2-molecules/InviteForm.vue'
 </script>
 
 <template>
-  <TheHeader class="flex mb-5 justify-center" />
+  <TheHeader class="md:flex md:mb-5 md:justify-center" />
   <router-view v-slot="{ Component }">
     <transition name="route" mode="out-in">
       <component :is="Component"></component>

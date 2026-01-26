@@ -2,7 +2,7 @@
 import JoinUsButton from '@/components/1-atoms/JoinUsButton.vue'
 import TheTimer from '@/components/2-molecules/TheTimer.vue'
 import Welcome from '@/components/2-molecules/WelcomeComponent.vue'
-import Carousel from '@/components/1-atoms/CarouselImages.vue'
+import CarouselImages from '@/components/1-atoms/CarouselImages.vue'
 import image1 from '@/assets/images/35328565-l_3_256645-163759244248377.jpeg'
 import image2 from '@/assets/images/56699345-une-jeune-couple-de-africain-americain-la-mariee-et-jeune-marie-a-leur-mariage-la-ceremonie-photo.jpg'
 import image3 from '@/assets/images/C3V3LMt.jpg'
@@ -37,7 +37,7 @@ const carouselImages = [
     <Welcome />
     <TheTimer />
     <JoinUsButton />
-    <Carousel :carouselImages="carouselImages" />
+    <CarouselImages :carouselImages="carouselImages" />
     <OurStory />
     <HonorSquad />
     <TheSchedule />

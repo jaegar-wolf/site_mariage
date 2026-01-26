@@ -7,8 +7,8 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl text-neutral">
+  <div class="flex flex-col text-sm md:text-base">
+    <span class="countdown font-mono text-3xl md:text-5xl text-neutral">
       <span
         :style="'--value:' + timeLeft + '; --digits:' + digits + ';'"
         aria-live="polite"
