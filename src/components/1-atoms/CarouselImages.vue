@@ -41,7 +41,8 @@ defineProps({
   align-items: center;
   justify-content: center;
   gap: 1em;
-  animation: spin 8s linear infinite;
+  animation: spin 15s linear infinite;
+  -webkit-animation: spin 15s linear infinite;
   padding-right: 1em;
 }
 
