@@ -16,7 +16,7 @@ const scheduleList: SchedulePartProps[] = [
     image: starForgeEntry,
     comment:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam est earum autemunde, nam architecto eligendi illum fugit? Architecto quis tenetur error similique totam non beatae, dolor commodi eveniet veritatis.',
-    imageCover: false,
+    imageCover: true,
   },
   {
     title: '02. CÉRÉMONIE LAÏQUE',

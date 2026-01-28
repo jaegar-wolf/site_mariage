@@ -11,65 +11,121 @@ import { useObserver } from '@/composables/observerComposable'
 import { gsap } from 'gsap'
 import { ref, useTemplateRef } from 'vue'
 
+const isMobile = () => screen.width <= 768
 /*** Animations ***/
 const beforeEnter = (el: Element) => {
   const target = el as HTMLElement
 
-  if (target.dataset.index && Number(target.dataset.index) % 2 === 0) {
+  if (isMobile()) {
+    if (target.dataset.index && Number(target.dataset.index) % 2 === 0) {
+      gsap.from(target, {
+        opacity: 0,
+        x: 100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+      })
+    } else {
+      gsap.from(target, {
+        opacity: 0,
+        x: -100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+      })
+    }
+  } else {
+    if (target.dataset.index && Number(target.dataset.index) % 2 === 0) {
+      gsap.from(target, {
+        opacity: 0,
+        y: 100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+      })
+    } else {
+      gsap.from(target, {
+        opacity: 0,
+        y: -100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+      })
+    }
+  }
+}
+const enter = (el: Element, done: () => void) => {
+  const target = el as HTMLElement
+  if (isMobile()) {
+    gsap.to(target, {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      onComplete: done,
+      delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+    })
+  } else {
+    gsap.to(target, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      onComplete: done,
+      delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+    })
+  }
+}
+
+const beforeLeave = (el: Element) => {
+  const target = el as HTMLElement
+  if (isMobile()) {
     gsap.from(target, {
-      opacity: 0,
-      y: 100,
+      opacity: 1,
+      x: 0,
       duration: 0.8,
       delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
     })
   } else {
     gsap.from(target, {
-      opacity: 0,
-      y: -100,
+      opacity: 1,
+      y: 0,
       duration: 0.8,
       delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
     })
   }
 }
-const enter = (el: Element, done: () => void) => {
-  const target = el as HTMLElement
-  gsap.to(target, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    onComplete: done,
-    delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
-  })
-}
-
-const beforeLeave = (el: Element) => {
-  const target = el as HTMLElement
-  gsap.from(target, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
-  })
-}
 
 const leave = (el: Element, done: () => void) => {
   const target = el as HTMLElement
-  if (target.dataset.index && Number(target.dataset.index) % 2 === 0) {
-    gsap.to(target, {
-      opacity: 0,
-      y: 100,
-      duration: 0.8,
-      delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
-      onComplete: done,
-    })
+  if (isMobile()) {
+    if (target.dataset.index && Number(target.dataset.index) % 2 === 0) {
+      gsap.from(target, {
+        opacity: 0,
+        x: 100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+      })
+    } else {
+      gsap.from(target, {
+        opacity: 0,
+        x: -100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+      })
+    }
   } else {
-    gsap.to(target, {
-      opacity: 0,
-      y: -100,
-      duration: 0.8,
-      delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
-      onComplete: done,
-    })
+    if (target.dataset.index && Number(target.dataset.index) % 2 === 0) {
+      gsap.to(target, {
+        opacity: 0,
+        y: 100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+        onComplete: done,
+      })
+    } else {
+      gsap.to(target, {
+        opacity: 0,
+        y: -100,
+        duration: 0.8,
+        delay: target.dataset.index ? Number(target.dataset.index) * 0.2 : 0,
+        onComplete: done,
+      })
+    }
   }
 }
 
@@ -106,7 +162,7 @@ useObserver(honorSquadList, honorSquadListRef, defaultHonorSquadList, [])
 
 <template>
   <div class="flex flex-col items-center min-h-400">
-    <div id="honorSquad" class="font-forum text-primary text-[64px] text-center">
+    <div id="honorSquad" class="font-forum text-primary text-3xl md:text-[64px] text-center">
       C'EST LE MOMENT DE BRILLER GRÂCE À EUX
     </div>
     <div class="w-full min-h-110 flex flex-col items-center" ref="witnessSquad">
@@ -125,7 +181,7 @@ useObserver(honorSquadList, honorSquadListRef, defaultHonorSquadList, [])
           v-for="(person, index) in witnessList"
           :key="index"
           :data-index="index"
-          class="h-100 max-w-70 min-w-70 shadow-lg text-white border-15 border-b-60"
+          class="md:h-100 md:max-w-70 md:min-w-70 shadow-lg text-white border-15 border-b-60"
         >
           <img :src="person.img" :alt="person.name" class="size-full object-cover" />
 

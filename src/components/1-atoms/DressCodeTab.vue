@@ -5,7 +5,7 @@ defineProps<DressCodeTabProps>()
 </script>
 
 <template>
-  <div class="relative bottom-85 flex flex-row gap-8 w-full">
+  <div class="hidden md:relative md:bottom-85 md:flex md:flex-row md:gap-8 md:w-full">
     <div class="h-140 mt-10 flex flex-col w-93 shadow-2xl shadow-secondary rounded-t-full">
       <img :src="imageLeft" class="h-95 w-full object-cover rounded-t-full flex-1" />
       <div class="bg-base-200 w-full flex flex-col items-center text-primary p-5">

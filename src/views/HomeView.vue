@@ -34,10 +34,12 @@ const carouselImages = [
 
 <template>
   <main class="size-full flex flex-col justify-start items-center gap-8 p-4">
-    <Welcome />
-    <TheTimer />
-    <JoinUsButton />
-    <CarouselImages :carouselImages="carouselImages" />
+    <div class="size-full flex flex-col justify-start items-center gap-8 px-4 my-12 md:my-0 md:p-4">
+      <Welcome />
+      <TheTimer />
+      <JoinUsButton />
+      <CarouselImages :carouselImages="carouselImages" />
+    </div>
     <OurStory />
     <HonorSquad />
     <TheSchedule />

@@ -58,7 +58,7 @@ const router = useRouter()
         target="_blank"
       >
         <div class="mt-[5%] h-9/10 w-9/10 border-2 border-base-200 absolute opacity-45"></div>
-        <img :src="image" class="h-full" :class="imageCover ? 'object-cover' : ''" />
+        <img :src="image" class="h-full w-full" :class="imageCover ? 'object-cover' : ''" />
       </a>
     </div>
     <div v-else class="h-full w-1/2 relative flex justify-center">

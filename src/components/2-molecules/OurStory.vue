@@ -73,9 +73,11 @@ const goRight = () => {
 </script>
 
 <template>
-  <div class="h-210 flex flex-col items-center">
-    <div id="ourStory" class="font-plusjakartasans text-sm text-primary">NOTRE HISTOIRE</div>
-    <div class="font-forum text-primary text-[64px] text-center">
+  <div class="mt-20 -mb-40 md:mb-0 md:mt-0 h-210 flex flex-col items-center">
+    <div id="ourStory" class="font-plusjakartasans text-sm text-primary pb-2 md:pb-0">
+      NOTRE HISTOIRE
+    </div>
+    <div class="font-forum text-primary text-3xl md:text-[64px] text-center">
       TOUT A COMMECÉ AU COLLÈGE PAUL SYMPHOR, VOICI NOTRE HISTOIRE
     </div>
     <Transition appear name="route" mode="out-in">
@@ -94,17 +96,23 @@ const goRight = () => {
       :chapters="chapters"
       :currentChapter="currentChapter"
     />
-    <div class="grid grid-cols-2 relative -top-132 left-120">
-      <div class="text-purple-100 h-22 w-22 relative rotate-30 left-20 -top-4">
+    <div class="grid grid-cols-2 relative size-5/10 md:size-auto -top-132 left-30 md:left-120">
+      <div class="text-purple-100 size-9 md:size-22 relative rotate-30 left-20 top-44 md:-top-4">
         <HeartSvg class="size-full" />
       </div>
-      <div class="text-neutral h-12 w-12 rotate-12 relative top-11 left-2">
+      <div
+        class="text-neutral size-5 md:size-12 rotate-12 relative top-50 left-8 md:top-11 md:left-2"
+      >
         <HeartSvg class="size-full" />
       </div>
-      <div class="text-neutral h-42 w-42 rotate-30 relative -top-6 left-10">
+      <div
+        class="text-neutral size-18 md:size-42 rotate-30 relative top-20 left-16 md:-top-6 md:left-10"
+      >
         <HeartSvg class="size-full" />
       </div>
-      <div class="text-purple-100 h-22 w-22 -rotate-12 relative left-8">
+      <div
+        class="text-purple-100 size-9 md:size-22 -rotate-12 relative top-18 md:top-0 left-10 md:left-8"
+      >
         <HeartSvg class="size-full" />
       </div>
     </div>

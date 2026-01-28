@@ -60,7 +60,7 @@ onUnmounted(() => {
       <div class="font-plusjakartasans text-sm text-primary text-center">CHAMPÊTRE</div>
       <div class="font-forum text-[4.19rem]">DRESS CODE DES INVITÉS</div>
     </div>
-    <div class="text-neutral w-full md:w-[110%] h-full">
+    <div class="hidden md:text-neutral md:w-[110%] md:h-full">
       <img :src="dresscodeBackgroundSvg" />
       <DressCodeBackgroundSvg />
     </div>

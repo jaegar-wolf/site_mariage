@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ArrowLeft } from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
+
 defineProps<{
   currentChapter: number
   chapters: Array<{
@@ -25,19 +28,7 @@ defineEmits<{
           v-if="currentChapter !== 0"
           @click="$emit('goLeft')"
         >
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path
-                d="M6 12H18M6 12L11 7M6 12L11 17"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </g>
-          </svg>
+          <ArrowLeft :size="32" :stroke-width="2.5" />
         </button>
       </Transition>
     </div>
@@ -48,19 +39,7 @@ defineEmits<{
           v-if="currentChapter !== chapters.length - 1"
           @click="$emit('goRight')"
         >
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path
-                d="M6 12H18M18 12L13 7M18 12L13 17"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </g>
-          </svg>
+          <ArrowRight :size="32" :stroke-width="2.5" />
         </button>
       </Transition>
     </div>

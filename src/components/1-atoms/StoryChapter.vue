@@ -21,10 +21,10 @@ useObserver(imageRightisInView, imageRightRef, true, false)
 </script>
 
 <template>
-  <div class="test w-full relative text-center text-white mt-10 flex justify-center">
-    <div ref="imageLeftRef" class="w-1/4 h-96 relative">
+  <div class="w-full relative text-center text-white mt-10 flex justify-center">
+    <div ref="imageLeftRef" class="w-2/10 md:w-1/4 h-60 md:h-96 relative">
       <Transition name="slide-fade-inverse">
-        <div v-if="imageLeftisInView" class="h-96 -rotate-12 mr-[-70px]">
+        <div v-if="imageLeftisInView" class="h-70 w-40 md:h-96 md:w-auto -rotate-12 md:-mr-17.5">
           <img
             :src="imageLeft"
             alt="our story image 1"
@@ -33,17 +33,26 @@ useObserver(imageRightisInView, imageRightRef, true, false)
         </div>
       </Transition>
     </div>
-    <div class="relative">
+    <div class="relative top-6 md:left-0 left-2 md:top-0 w-8/10 md:w-auto">
       <img :src="CoeurSvg" alt="coeur" class="w-full" />
-      <div class="absolute left-[37%] top-[22%] font-forum text-3xl text-center">{{ date }}</div>
-      <div class="absolute left-[24%] top-[35%] font-dynalight text-5xl">
+      <div
+        class="absolute left-[37%] top-[16%] md:top-[22%] font-forum text-base md:text-3xl text-center"
+      >
+        {{ date }}
+      </div>
+      <div
+        class="absolute left-[26%] md:left-[24%] top-[26%] md:top-[35%] font-dynalight text-lg md:text-5xl w-5/10"
+      >
         <span v-html="message"></span>
       </div>
     </div>
 
-    <div ref="imageRightRef" class="w-1/4 h-96 relative">
+    <div ref="imageRightRef" class="w-2/10 md:w-1/4 h-60 md:h-96 relative">
       <Transition name="slide-fade">
-        <div v-if="imageRightisInView" class="h-96 rotate-12 relative ml-[-70px]">
+        <div
+          v-if="imageRightisInView"
+          class="h-70 w-40 md:h-96 md:w-auto rotate-12 relative -ml-18 md:-ml-17.5"
+        >
           <img
             :src="imageRight"
             alt="our story image 1"
