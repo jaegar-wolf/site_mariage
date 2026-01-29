@@ -6,6 +6,7 @@ import receptionPicture from '@/assets/images/receptionPicture.webp'
 import SchedulePartOdd from '../1-atoms/SchedulePartOdd.vue'
 import type { SchedulePartProps } from '@/types'
 import SchedulePartEven from '../1-atoms/SchedulePartEven.vue'
+import { isMobile } from '@/composables'
 
 const scheduleList: SchedulePartProps[] = [
   {
@@ -52,7 +53,20 @@ const scheduleList: SchedulePartProps[] = [
 <template>
   <div id="schedule">
     <template v-for="(schedulePart, index) in scheduleList">
-      <template v-if="!(index % 2)">
+      <template v-if="isMobile()">
+        <SchedulePartOdd
+          :key="index"
+          :title="schedulePart.title"
+          :time="schedulePart.time"
+          :comment="schedulePart.comment"
+          :image="schedulePart.image"
+          :is-first="schedulePart.isFirst"
+          :is-last="schedulePart.isLast"
+          :link-on-image="schedulePart.linkOnImage"
+          :image-cover="schedulePart.imageCover"
+        />
+      </template>
+      <template v-else-if="!(index % 2)">
         <SchedulePartOdd
           :key="index"
           :title="schedulePart.title"

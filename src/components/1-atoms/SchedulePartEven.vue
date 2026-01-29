@@ -33,7 +33,7 @@ const router = useRouter()
       </div>
       <div class="mx-18 my-10 flex flex-col text-base-200">
         <div class="font-plusjakartasans text-sm font-normal">ORDRE DU JOUR</div>
-        <div class="font-forum text-[3.18rem]/normal mb-5">{{ title }}</div>
+        <div class="font-forum text-5xl/normal mb-5">{{ title }}</div>
         <div class="flex flex-row my-1 items-center gap-2">
           <pinnedHeartSvg class="size-4 mt-1" />
           <div class="font-plusjakartasans text-base">Date: Samedi 15 Août, 2026 à {{ time }}</div>
@@ -48,12 +48,6 @@ const router = useRouter()
               >Domaine de l'Étoile de Forges, 1 Le Mont au Bec, <br />
               76440 Longmesnil</a
             >
-          </div>
-        </div>
-
-        <div class="my-1">
-          <div class="font-plusjakartasans text-base">
-            {{ comment }}
           </div>
         </div>
 

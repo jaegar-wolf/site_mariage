@@ -20,11 +20,11 @@ defineEmits<{
 </script>
 
 <template>
-  <div class="flex justify-between w-48">
-    <div class="w-22">
+  <div class="flex justify-center md:justify-between w-full md:w-48">
+    <div class="w-[25%] md:w-22">
       <Transition name="fade-from-bottom">
         <button
-          class="btn btn-secondary btn-xl mt-10 rounded-full w-full text-white"
+          class="btn btn-secondary btn-xl mt-10 rounded-full md:w-full text-white"
           v-if="currentChapter !== 0"
           @click="$emit('goLeft')"
         >
@@ -32,10 +32,10 @@ defineEmits<{
         </button>
       </Transition>
     </div>
-    <div class="w-22">
+    <div class="w-[25%] md:w-22">
       <Transition name="fade-from-bottom">
         <button
-          class="btn btn-primary btn-xl mt-10 rounded-full w-full text-white"
+          class="btn btn-primary btn-xl mt-10 rounded-full md:w-full text-white"
           v-if="currentChapter !== chapters.length - 1"
           @click="$emit('goRight')"
         >

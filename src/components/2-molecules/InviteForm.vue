@@ -16,7 +16,7 @@ const sendData = () => {
 </script>
 
 <template>
-  <div class="bg-primary w-dvw flex flex-col items-center">
+  <div class="bg-primary h-full w-dvw flex flex-col items-center">
     <div id="rsvp" class="text-6xl text-center font-forum mt-20 text-base-200">
       SOYEZ NOTRE INVITÉ
     </div>

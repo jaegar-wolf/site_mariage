@@ -46,7 +46,7 @@ onMounted(() => {
     } else {
       currentImageTab.value = 0
     }
-  }, 8000)
+  }, 15000)
 })
 
 onUnmounted(() => {
@@ -55,12 +55,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="dressCode" class="flex flex-col items-center h-210 w-full">
+  <div id="dressCode" class="flex flex-col items-center h-460 md:h-210 w-full">
     <div class="mb-5">
       <div class="font-plusjakartasans text-sm text-primary text-center">CHAMPÊTRE</div>
-      <div class="font-forum text-[4.19rem]">DRESS CODE DES INVITÉS</div>
+      <div class="font-forum text-3xl md:text-[4.19rem]">DRESS CODE DES INVITÉS</div>
     </div>
-    <div class="hidden md:text-neutral md:w-[110%] md:h-full">
+    <div class="hidden md:block md:text-neutral md:w-[110%] md:h-full">
       <img :src="dresscodeBackgroundSvg" />
       <DressCodeBackgroundSvg />
     </div>

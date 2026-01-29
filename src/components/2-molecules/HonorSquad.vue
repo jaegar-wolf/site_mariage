@@ -7,11 +7,10 @@ import groomMen2 from '@/assets/images/groomMen2.avif'
 import groomMen3 from '@/assets/images/groomMen3.avif'
 import witness1 from '@/assets/images/witness1.avif'
 import witness2 from '@/assets/images/witness2.avif'
-import { useObserver } from '@/composables/observerComposable'
+import { useObserver, isMobile } from '@/composables'
 import { gsap } from 'gsap'
 import { ref, useTemplateRef } from 'vue'
 
-const isMobile = () => screen.width <= 768
 /*** Animations ***/
 const beforeEnter = (el: Element) => {
   const target = el as HTMLElement

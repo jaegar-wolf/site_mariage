@@ -3,6 +3,7 @@ import LogoVue from '@/components/1-atoms/LogoM&M.vue'
 import NavBarLinks from '@/components/1-atoms/NavBarLinks.vue'
 import { useRoute } from 'vue-router'
 import HamburgerIcon from '@/assets/svg/hamburgerIcon.vue'
+import { isMobile } from '@/composables'
 
 const route = useRoute()
 
@@ -17,8 +18,6 @@ const rightLinks = [
   { path: '#dressCode', label: 'Dress code' },
   { path: '#invite', label: 'Invitation' },
 ]
-
-const isMobile = () => screen.width <= 768
 </script>
 
 <template>

@@ -12,6 +12,8 @@ import ourStoryImage8 from '@/assets/images/ourStoryImg8.jpg'
 import StoryChapter from '@/components/1-atoms/StoryChapter.vue'
 import { computed, ref } from 'vue'
 import ChapterButtons from '../1-atoms/ChapterButtons.vue'
+import { isMobile } from '@/composables'
+import StoryChapterMobile from '../1-atoms/StoryChapterMobile.vue'
 
 const chapters = [
   {
@@ -81,13 +83,24 @@ const goRight = () => {
       TOUT A COMMECÉ AU COLLÈGE PAUL SYMPHOR, VOICI NOTRE HISTOIRE
     </div>
     <Transition appear name="route" mode="out-in">
-      <StoryChapter
-        :key="getChapter.id"
-        :imageLeft="getChapter.imageLeft"
-        :imageRight="getChapter.imageRight"
-        :date="getChapter.date"
-        :message="getChapter.message"
-      />
+      <template v-if="isMobile()">
+        <StoryChapterMobile
+          :key="getChapter.id"
+          :imageLeft="getChapter.imageLeft"
+          :imageRight="getChapter.imageRight"
+          :date="getChapter.date"
+          :message="getChapter.message"
+        />
+      </template>
+      <template v-else>
+        <StoryChapter
+          :key="getChapter.id"
+          :imageLeft="getChapter.imageLeft"
+          :imageRight="getChapter.imageRight"
+          :date="getChapter.date"
+          :message="getChapter.message"
+        />
+      </template>
     </Transition>
 
     <ChapterButtons
@@ -96,22 +109,24 @@ const goRight = () => {
       :chapters="chapters"
       :currentChapter="currentChapter"
     />
-    <div class="grid grid-cols-2 relative size-5/10 md:size-auto -top-132 left-30 md:left-120">
-      <div class="text-purple-100 size-9 md:size-22 relative rotate-30 left-20 top-44 md:-top-4">
-        <HeartSvg class="size-full" />
-      </div>
+    <div class="grid grid-cols-2 relative size-5/10 md:size-auto -top-132 left-0 md:left-120">
       <div
-        class="text-neutral size-5 md:size-12 rotate-12 relative top-50 left-8 md:top-11 md:left-2"
+        class="text-purple-100 size-9 md:size-22 relative -rotate-20 md:rotate-30 md:left-20 top-42 md:-top-4"
       >
         <HeartSvg class="size-full" />
       </div>
       <div
-        class="text-neutral size-18 md:size-42 rotate-30 relative top-20 left-16 md:-top-6 md:left-10"
+        class="text-neutral size-5 md:size-12 rotate-12 relative top-50 right-7 md:top-11 md:left-2"
       >
         <HeartSvg class="size-full" />
       </div>
       <div
-        class="text-purple-100 size-9 md:size-22 -rotate-12 relative top-18 md:top-0 left-10 md:left-8"
+        class="text-neutral size-18 md:size-42 -rotate-20 md:rotate-30 relative top-64 left-18 md:-top-6 md:left-10"
+      >
+        <HeartSvg class="size-full" />
+      </div>
+      <div
+        class="text-purple-100 size-9 md:size-22 rotate-30 md:-rotate-12 relative top-18 md:top-0 left-10 md:left-8"
       >
         <HeartSvg class="size-full" />
       </div>
