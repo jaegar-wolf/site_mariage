@@ -16,27 +16,25 @@ const sendData = () => {
 </script>
 
 <template>
-  <div class="bg-primary h-full w-dvw flex flex-col items-center">
-    <div id="rsvp" class="text-6xl text-center font-forum mt-20 text-base-200">
+  <div class="bg-primary h-auto w-dvw flex flex-col items-center">
+    <div id="rsvp" class="text-3xl md:text-6xl text-center font-forum mt-20 text-base-200">
       SOYEZ NOTRE INVITÉ
     </div>
-    <div class="my-6 font-plusjakartasans text-[16px] text-base-200">
-      Your kind respond in requested by August twentieth, 2024
-    </div>
+
     <div class="w-full flex flex-col items-center">
-      <div class="w-4/10 my-2">
+      <div class="md:w-4/10 my-2">
         <div class="text-base-200 text-[16px] font-plusjakartasans">Nom Complet</div>
         <input v-model="formData.name" type="text" class="input input-lg my-2 w-full" />
       </div>
-      <div class="w-4/10 my-2">
+      <div class="md:w-4/10 my-2">
         <div class="text-base-200 text-[16px] font-plusjakartasans">Adresse Email</div>
         <input v-model="formData.email" type="email" class="input input-lg my-2 w-full" />
       </div>
-      <div class="w-4/10 my-2">
+      <div class="md:w-4/10 my-2">
         <div class="text-base-200 text-[16px] font-plusjakartasans">Numéro de téléphone</div>
         <input v-model="formData.phone" type="tel" class="input input-lg my-2 w-full" />
       </div>
-      <div class="w-4/10 my-2">
+      <div class="md:w-4/10 my-2">
         <div class="text-base-200 text-[16px] font-plusjakartasans">Nombre d'invités</div>
         <input
           v-model="formData.numberOfGuest"
@@ -45,11 +43,11 @@ const sendData = () => {
           class="input input-lg my-2 w-full"
         />
       </div>
-      <div class="w-4/10 my-2">
+      <div class="w-7/10 md:w-4/10 my-2">
         <div class="text-base-200 text-[16px] font-plusjakartasans font-bold">
           Serez-vous présent au mariage ?
         </div>
-        <div class="flex flex-row w-4/10 my-2 gap-4">
+        <div class="flex flex-row md:w-4/10 my-2 gap-4">
           <div class="flex flex-row gap-2">
             <input
               type="radio"
@@ -74,11 +72,11 @@ const sendData = () => {
           </div>
         </div>
       </div>
-      <div class="w-4/10 my-2">
+      <div class="w-7/10 md:w-4/10 my-2">
         <div class="text-base-200 text-[16px] font-plusjakartasans font-bold">
           Choisissez votre plat :
         </div>
-        <div class="flex flex-row w-4/10 my-2 gap-4">
+        <div class="flex flex-row md:w-4/10 my-2 gap-4">
           <div class="flex flex-row gap-2">
             <input
               type="radio"
@@ -102,7 +100,7 @@ const sendData = () => {
         </div>
       </div>
 
-      <div class="w-4/10 mt-6 mb-20">
+      <div class="md:w-4/10 mt-6 mb-20">
         <button class="btn btn-base-200 hover:btn-neutral w-full btn-lg" @click="sendData">
           Envoyer
         </button>

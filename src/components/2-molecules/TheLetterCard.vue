@@ -36,16 +36,14 @@ const router = useRouter()
         Rejoignez-nous
       </button>
     </div>
-    <div class="size-95/100 border-2 border-primary absolute left-4 md:top-5 md:left-5">
+    <div class="size-95/100 border-2 border-primary absolute left-2 md:top-5 md:left-5">
       <div class="size-full border-2 border-primary rotate-2 relative">
         <HeartSvg
-          class="size-8 opacity-40 text-primary absolute left-76 md:-right-6 -top-8 rotate-16"
+          class="size-8 opacity-40 text-primary absolute -left-4 -top-1 md:-right-6 rotate-16"
         />
-        <HeartSvg class="size-12 text-primary absolute left-70 md:-right-1.5 -top-4 -rotate-12" />
-        <HeartSvg class="size-12 text-primary absolute left-72 md:-right-12 -bottom-2 rotate-16" />
-        <HeartSvg
-          class="size-8 opacity-40 text-primary left-75.5 absolute md:-right-2 bottom-6 -rotate-12"
-        />
+        <HeartSvg class="size-12 text-primary absolute -left-4 md:-right-1.5 top-2 -rotate-12" />
+        <HeartSvg class="size-12 text-primary absolute md:-right-12 -bottom-2 rotate-16" />
+        <HeartSvg class="size-8 opacity-40 text-primary absolute md:-right-2 bottom-6 -rotate-12" />
       </div>
     </div>
   </div>

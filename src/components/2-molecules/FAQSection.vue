@@ -55,11 +55,13 @@ const faqDataList = [
 
 <template>
   <div>
-    <div class="font-forum text-6xl text-primary text-center">FAQ'S</div>
-    <div class="grid grid-cols-2 w-full mt-4">
+    <div class="font-forum text-3xl md:text-6xl text-primary text-center">
+      Questions et Conseils
+    </div>
+    <div class="flex flex-col md:grid md:grid-cols-2 w-full mt-4">
       <div class="my-4 mx-1" v-for="(value, index) in faqDataList" :key="index">
-        <div class="font-forum text-3xl">{{ value.question }}</div>
-        <div class="mt-4 font-plusjakartasans text-lg">
+        <div class="font-forum text-xl md:text-3xl">{{ value.question }}</div>
+        <div class="mt-4 font-plusjakartasans text-base md:text-lg">
           {{ value.answer }}
         </div>
       </div>

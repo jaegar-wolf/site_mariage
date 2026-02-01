@@ -4,13 +4,15 @@ import InviteForm from './components/2-molecules/InviteForm.vue'
 </script>
 
 <template>
-  <TheHeader class="md:flex md:mb-5 md:justify-center" />
+  <header>
+    <TheHeader class="md:flex md:mb-5 md:justify-center" />
+  </header>
   <router-view v-slot="{ Component }">
     <transition name="route" mode="out-in">
       <component :is="Component"></component>
     </transition>
   </router-view>
-  <footer class="size-full mt-5 flex flex-col justify-start items-center">
+  <footer class="try md:size-full mt-5 flex flex-col justify-start items-center bg-primary static">
     <InviteForm />
   </footer>
 </template>
@@ -31,5 +33,8 @@ import InviteForm from './components/2-molecules/InviteForm.vue'
 }
 .route-leave-active {
   transition: all 0.3s ease-in;
+}
+footer {
+  min-height: calc(100dvh - 900px);
 }
 </style>
