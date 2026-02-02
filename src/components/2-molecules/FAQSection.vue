@@ -1,54 +1,43 @@
 <script setup lang="ts">
 const faqDataList = [
   {
-    question: 'What is the date and time of the wedding ?',
+    question: "Quelle est la date et l'horaire de la cérémonie ?",
     answer:
-      'Our wedding will take place on August 201th at 4PM. We ask that guests arrive at least 15 minutes early to ensure everyone is seated in time for the ceremony.',
+      'Notre mariage est prévu le 15 août à 17h. Pour profiter pleinement de ce moment, nous vous accueillerons avec joie dès 15h30.',
   },
   {
-    question: 'Where is the wedding venue located?',
-    answer:
-      'The wedding will be held at Saint Mery Church, Miami. Parking is available onsite, and directions can be found here.',
+    question: 'Où se déroulera le mariage ?',
+    answer: "La cérémonie aura lieu au Domaine de l'Étoile de Forges, à Longmesnil.",
   },
   {
-    question: 'Will the ceremony and reception be outdoors ?',
+    question: 'La cérémonie et la réception auront-elles lieu en extérieur ?',
     answer:
-      'The ceremony will be held outdoors, and the reception will be outdoors. We recommend bringing a light jacket if the weather is cool.',
+      'La cérémonie ainsi que la réception se dérouleront en plein air. Nous vous conseillons de prévoir un vêtement léger en cas de fraîcheur.',
   },
   {
-    question: 'What should we do if we cannot attend ?',
+    question: 'Que faire si nous ne pouvons pas venir ?',
     answer:
-      ' If you’re unable to join us, please let us know as soon as possible by August 201th  so we can finalize our guest count.',
+      'Si vous ne pouvez malheureusement pas être des nôtres, merci de nous prévenir au plus tard le 30 mai afin que nous puissions arrêter définitivement la liste des invités.',
   },
   {
-    question: 'Can we take photos during the ceremony ?',
+    question: 'Pouvons-nous photographier pendant la cérémonie ?',
     answer:
-      'We ask that guests refrain from taking photos during the ceremony so our photographer can capture the moment without interruptions.',
+      "Afin de ne pas perturber le travail de notre photographe et de préserver l'intimité du moment, nous vous prions de ne pas prendre de photos pendant la cérémonie.",
   },
   {
-    question: 'Are there hotels nearby ?',
+    question: 'Y a-t-il des hôtels à proximité ?',
     answer:
-      'Yes, we have reserved a block of rooms at Chateau Hotel. Mention our wedding party to receive a discount when booking. The hotel address is [Address], and the phone number is [Phone Number].',
+      'Il y a un certain nombre de couchages sur le domaine et des gîtes/hôtels dans les environs. Veuillez contacter Sabrina notre wedding planneur concernant les hébergements.',
   },
   {
-    question: 'What time should we arrive ?',
+    question: "À quelle heure est-il recommandé d'arriver ?",
     answer:
-      'Please plan to arrive by August 20th, 04:00pm,as the ceremony will begin promptly. We suggest allowing extra time for traffic or parking.',
+      "La cérémonie débutant à 17h précises, nous vous conseillons d'arriver vers 15h30 pour anticiper d'éventuels retards liés à la circulation ou au stationnement.",
   },
   {
-    question: 'Can we bring gifts to the wedding ?',
+    question: 'Pouvons-nous apporter des cadeaux ?',
     answer:
-      'Your presence is truly our gift! However, if you’d like to give something, there will be a gift table at the reception.',
-  },
-  {
-    question: 'Will there be a space for children ?',
-    answer:
-      'Yes, we have a designated children’s area with activities and games. Childcare will be available for children ages 8 and up',
-  },
-  {
-    question: 'Who can we contact with additional questions?',
-    answer:
-      'For any other questions, feel free to contact [Name] at [Phone Number or Email Address]. We’re happy to help!',
+      'Votre présence nous comble déjà de bonheur ! Si toutefois vous souhaitez nous offrir un présent, une table sera prévue à cet effet lors de la réception.',
   },
 ]
 </script>
@@ -58,6 +47,14 @@ const faqDataList = [
     <div class="font-forum text-3xl md:text-6xl text-primary text-center">
       Questions et Conseils
     </div>
+
+    <p class="text-base font-plusjakartasans md:text-xl mt-10 font-bold text-primary text-center">
+      Afin que cette journée reste un moment de joie et de sérénité pour tous, nous précisons que la
+      présence d’enfants demande une vigilance particulière. Nous vous invitons, si possible, à
+      privilégier une organisation sans enfants. Si toutefois ils vous accompagnent, leur
+      surveillance restera sous votre responsabilité. Merci pour votre compréhension et votre
+      bienveillance.
+    </p>
     <div class="flex flex-col md:grid md:grid-cols-2 w-full mt-4">
       <div class="my-4 mx-1" v-for="(value, index) in faqDataList" :key="index">
         <div class="font-forum text-xl md:text-3xl">{{ value.question }}</div>
@@ -66,5 +63,8 @@ const faqDataList = [
         </div>
       </div>
     </div>
+    <p class="font-forum text-xl md:text-3xl mt-5 text-primary text-center">
+      Qui contacter pour toute question supplémentaire ?
+    </p>
   </div>
 </template>

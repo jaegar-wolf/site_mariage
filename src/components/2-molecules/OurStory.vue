@@ -80,7 +80,7 @@ const goRight = () => {
       NOTRE HISTOIRE
     </div>
     <div class="font-forum text-primary text-3xl md:text-[64px] text-center">
-      TOUT A COMMECÉ AU COLLÈGE PAUL SYMPHOR, VOICI NOTRE HISTOIRE
+      VOICI NOTRE HISTOIRE EN QUELQUES PHOTOS
     </div>
     <Transition appear name="route" mode="out-in">
       <template v-if="isMobile()">

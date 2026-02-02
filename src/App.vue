@@ -12,7 +12,7 @@ import InviteForm from './components/2-molecules/InviteForm.vue'
       <component :is="Component"></component>
     </transition>
   </router-view>
-  <footer class="try md:size-full mt-5 flex flex-col justify-start items-center bg-primary static">
+  <footer class="size-full mt-5 flex flex-col justify-start items-center">
     <InviteForm />
   </footer>
 </template>
@@ -33,8 +33,5 @@ import InviteForm from './components/2-molecules/InviteForm.vue'
 }
 .route-leave-active {
   transition: all 0.3s ease-in;
-}
-footer {
-  min-height: calc(100dvh - 900px);
 }
 </style>
