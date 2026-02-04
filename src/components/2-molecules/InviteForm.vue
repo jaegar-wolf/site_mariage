@@ -1,61 +1,157 @@
 <script setup lang="ts">
 import { isMobile } from '@/composables'
-import { reactive } from 'vue'
+import { reactive, ref, useTemplateRef } from 'vue'
+import axios from 'axios'
+import { useDebounceFn } from '@vueuse/core'
 
-const formData = reactive({
-  name: '',
-  email: '',
-  phone: '',
-  numberOfGuest: 1,
-  willAttempt: true,
+interface Guest {
+  firstName: string
+  lastName: string
+  meal: string
+  willAttend: boolean
+}
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: 10000, // 10 secondes max
+})
+const formData = reactive<{
+  firstName: string
+  lastName: string
+  numberOfGuests: number
+  guestList: Guest[]
+  willAttend: boolean
+  meal: string
+}>({
+  firstName: '',
+  lastName: '',
+  numberOfGuests: 1,
+  guestList: [],
+  willAttend: true,
   meal: 'Poulet',
 })
 
-const sendData = () => {
-  console.log(formData)
+const sendData = async () => {
+  try {
+    isLoading.value = true
+    await api.post('/sheets/add-guest', formData)
+
+    dialogMessage.status = 'success'
+    dialogMessage.title = 'Merci pour votre réponse !'
+    dialogMessage.message =
+      "Votre réponse a été enregistrée, à bientôt ! Si vous avez d'autres questions, adressez-vous à Sabrina"
+    openDialog()
+  } catch (error) {
+    dialogMessage.status = 'error'
+    dialogMessage.title = 'Une erreur est survenue'
+    dialogMessage.message =
+      "Nous sommes désolés, votre réponse n'a pas été enregistrée. Contactez Sabrina"
+    openDialog()
+    if (axios.isAxiosError(error)) {
+      console.log('Status:', error.response?.status)
+      console.log('Message:', error.response?.data)
+    }
+  } finally {
+    isLoading.value = false
+  }
 }
+
+const debouncedSend = useDebounceFn(sendData, 300)
+
 const btnClass = isMobile() ? 'btn-primary' : 'btn-base-200'
+
+const cachedGuests: Guest[] = []
+
+const changeNumberOfGuest = (numberOfGuests: number) => {
+  formData.numberOfGuests = numberOfGuests
+  const targetLength = numberOfGuests - 1
+
+  // Sauvegarde les données actuelles dans le cache
+  formData.guestList.forEach((guest, i) => {
+    cachedGuests[i] = guest
+  })
+
+  if (targetLength <= 0) {
+    formData.guestList = []
+  } else {
+    const newList: Guest[] = []
+    for (let i = 0; i < targetLength; i++) {
+      newList.push(
+        cachedGuests[i] || {
+          firstName: '',
+          lastName: '',
+          willAttend: true,
+          meal: formData.meal,
+        },
+      )
+    }
+    formData.guestList = newList
+  }
+}
+
+const updateGuestField = <K extends keyof Guest>(index: number, field: K, value: Guest[K]) => {
+  const guest = formData.guestList.at(index)
+  if (guest) {
+    guest[field] = value
+  }
+}
+
+const updateGuestAttendance = (index: number, answer: string) => {
+  updateGuestField(index, 'willAttend', answer === 'Oui')
+}
+
+const isLoading = ref(false)
+
+const dialogRef = useTemplateRef<HTMLDialogElement>('dialogRef')
+
+const dialogMessage = reactive({
+  title: '',
+  message: '',
+  status: 'success' as 'success' | 'error',
+})
+
+const openDialog = () => {
+  dialogRef.value?.showModal()
+}
+
+const closeDialog = () => {
+  dialogRef.value?.close()
+}
 </script>
 
 <template>
   <div class="bg-base-200 md:bg-primary h-full w-dvw flex flex-col items-center">
     <div
       id="rsvp"
-      class="text-3xl md:text-6xl text-center font-forum mt-20 text-primary md:text-base-200"
+      class="text-3xl md:text-6xl text-center font-forum mt-40 text-primary md:text-base-200"
     >
       SOYEZ NOTRE INVITÉ
     </div>
 
-    <div class="w-full flex flex-col items-center">
-      <div class="md:w-4/10 my-2">
-        <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">
-          Nom Complet
-        </div>
-        <input v-model="formData.name" type="text" class="input input-lg my-2 w-full" />
+    <div class="w-full flex flex-col items-center mb-40">
+      <div class="w-7/10 md:w-4/10 my-2">
+        <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">Nom</div>
+        <input v-model="formData.lastName" type="text" class="input input-lg my-2 w-full" />
       </div>
-      <div class="md:w-4/10 my-2">
-        <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">
-          Adresse Email
-        </div>
-        <input v-model="formData.email" type="email" class="input input-lg my-2 w-full" />
+
+      <div class="w-7/10 md:w-4/10 my-2">
+        <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">Prénom</div>
+        <input v-model="formData.firstName" type="text" class="input input-lg my-2 w-full" />
       </div>
-      <div class="md:w-4/10 my-2">
-        <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">
-          Numéro de téléphone
-        </div>
-        <input v-model="formData.phone" type="tel" class="input input-lg my-2 w-full" />
-      </div>
-      <div class="md:w-4/10 my-2">
+
+      <div class="w-7/10 md:w-4/10 my-2">
         <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">
           Nombre d'invités
         </div>
         <input
-          v-model="formData.numberOfGuest"
+          :value="formData.numberOfGuests"
+          @input="(event) => changeNumberOfGuest(Number((event.target as HTMLInputElement).value))"
           type="number"
-          max="5"
+          max="6"
+          min="1"
           class="input input-lg my-2 w-full"
         />
       </div>
+
       <div class="w-7/10 md:w-4/10 my-2">
         <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans font-bold">
           Serez-vous présent au mariage ?
@@ -66,9 +162,9 @@ const btnClass = isMobile() ? 'btn-primary' : 'btn-base-200'
               type="radio"
               name="radio-presence"
               class="radio radio-neutral"
-              :checked="formData.willAttempt"
-              :value="formData.willAttempt"
-              @click="() => (formData.willAttempt = true)"
+              :checked="formData.willAttend"
+              :value="formData.willAttend"
+              @click="() => (formData.willAttend = true)"
             />
             <div class="text-primary md:text-base-200">Oui</div>
           </div>
@@ -77,9 +173,9 @@ const btnClass = isMobile() ? 'btn-primary' : 'btn-base-200'
               type="radio"
               name="radio-presence"
               class="radio radio-neutral"
-              :checked="!formData.willAttempt"
-              :value="formData.willAttempt"
-              @click="() => (formData.willAttempt = false)"
+              :checked="!formData.willAttend"
+              :value="formData.willAttend"
+              @click="() => (formData.willAttend = false)"
             />
             <div class="text-primary md:text-base-200">Non</div>
           </div>
@@ -112,12 +208,93 @@ const btnClass = isMobile() ? 'btn-primary' : 'btn-base-200'
           </div>
         </div>
       </div>
+      <template v-if="formData.guestList.length > 0">
+        <div class="text-base-200 md:w-4/10 font-plusjakartasans font-bold">Invités :</div>
+        <div
+          v-for="(guest, index) in formData.guestList"
+          :key="index"
+          class="w-full px-5 md:px-0 md:w-4/10 grid grid-cols-4 gap-3 items-center"
+        >
+          <div>
+            <input
+              type="text"
+              class="input input-lg my-2"
+              placeholder="Nom"
+              :value="guest.lastName"
+              @input="
+                (event) =>
+                  updateGuestField(index, 'lastName', (event.target as HTMLInputElement).value)
+              "
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Prénom"
+              class="input input-lg my-2"
+              :value="guest.firstName"
+              @input="
+                (event) =>
+                  updateGuestField(index, 'firstName', (event.target as HTMLInputElement).value)
+              "
+            />
+          </div>
+          <select
+            class="select select-lg"
+            :value="guest.meal"
+            @change="
+              (event) => updateGuestField(index, 'meal', (event.target as HTMLInputElement).value)
+            "
+          >
+            <option disabled selected>Plat</option>
+            <option>Poulet</option>
+            <option>Poisson</option>
+          </select>
+
+          <select
+            class="select select-lg"
+            :value="guest.willAttend ? 'Oui' : 'Non'"
+            @change="
+              (event) => updateGuestAttendance(index, (event.target as HTMLInputElement).value)
+            "
+          >
+            <option disabled selected>Présence</option>
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
+      </template>
 
       <div class="md:w-4/10 my-10">
-        <button class="btn hover:btn-neutral w-full btn-lg" :class="btnClass" @click="sendData">
-          Envoyer
+        <button
+          class="btn hover:btn-neutral w-full btn-lg"
+          :class="btnClass"
+          @click="debouncedSend"
+        >
+          <template v-if="isLoading">
+            <span class="loading loading-spinner loading-lg"></span>
+          </template>
+          <template v-else> Envoyer </template>
         </button>
       </div>
+
+      <dialog ref="dialogRef" class="modal">
+        <div
+          class="modal-box border-t-4"
+          :class="dialogMessage.status === 'success' ? 'border-success' : 'border-error'"
+        >
+          <h3
+            class="text-lg font-bold"
+            :class="dialogMessage.status === 'success' ? 'text-success' : 'text-error'"
+          >
+            {{ dialogMessage.title }}
+          </h3>
+          <p class="py-4">{{ dialogMessage.message }}</p>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button @click="closeDialog">close</button>
+        </form>
+      </dialog>
     </div>
   </div>
 </template>
