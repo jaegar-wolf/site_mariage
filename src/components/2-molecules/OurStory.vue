@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import HeartSvg from '@/assets/svg/heartSvg.vue'
-import ourStoryImage1 from '@/assets/images/ourStoryImg1.avif'
-import ourStoryImage2 from '@/assets/images/ourStoryImg2.jpg'
+import ourStoryImage1 from '@/assets/ourStory/start1.jpeg'
+import ourStoryImage2 from '@/assets/ourStory/start2.jpeg'
 import ourStoryImage3 from '@/assets/images/ourStoryImg3.avif'
 import ourStoryImage4 from '@/assets/images/ourStoryImg4.jpg'
 import ourStoryImage5 from '@/assets/images/ourStoryImg5.jpg'

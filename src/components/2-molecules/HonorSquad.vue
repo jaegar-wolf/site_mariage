@@ -186,7 +186,7 @@ useObserver(weddingPInView, weddingPlanneurRef, true, false)
           v-for="(person, index) in witnessList"
           :key="index"
           :data-index="index"
-          class="md:h-100 md:max-w-70 md:min-w-70 shadow-lg text-white border-15 border-b-60"
+          class="h-100 max-w-70 min-w-70 shadow-lg text-white border-15 border-b-60"
         >
           <img :src="person.img" :alt="person.name" class="size-full object-cover" />
 
@@ -239,7 +239,7 @@ useObserver(weddingPInView, weddingPlanneurRef, true, false)
       >
         <div
           v-if="weddingPInView"
-          class="md:h-100 md:max-w-70 md:min-w-70 shadow-lg text-white border-15 border-b-60"
+          class="h-100 max-w-70 min-w-70 shadow-lg text-white border-15 border-b-60"
         >
           <img :src="sabrina" alt="Sabrina" class="size-full object-cover" />
 
