@@ -122,12 +122,12 @@ const closeDialog = () => {
   <div class="bg-base-200 md:bg-primary h-full w-dvw flex flex-col items-center">
     <div
       id="rsvp"
-      class="text-3xl md:text-6xl text-center font-forum mt-40 text-primary md:text-base-200"
+      class="text-3xl md:text-6xl text-center font-forum mt-20 text-primary md:text-base-200"
     >
       SOYEZ NOTRE INVITÉ
     </div>
 
-    <div class="w-full flex flex-col items-center mb-40">
+    <div class="w-full flex flex-col items-center mb-20">
       <div class="w-7/10 md:w-4/10 my-2">
         <div class="text-primary md:text-base-200 text-[16px] font-plusjakartasans">Nom</div>
         <input v-model="formData.lastName" type="text" class="input input-lg my-2 w-full" />
@@ -265,7 +265,7 @@ const closeDialog = () => {
         </div>
       </template>
 
-      <div class="md:w-4/10 my-10">
+      <div class="md:w-4/10 mt-10">
         <button
           class="btn hover:btn-neutral w-full btn-lg"
           :class="btnClass"

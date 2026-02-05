@@ -66,5 +66,9 @@ const faqDataList = [
     <p class="font-forum text-xl md:text-3xl mt-5 text-primary text-center">
       Qui contacter pour toute question supplémentaire ?
     </p>
+    <p class="mt-4 font-plusjakartasans text-base md:text-lg text-center">
+      Pour toutes précisions veuillez contacter notre wedding planneur Sabrina Vargas au numéro
+      suivant: <a href="tel:++330637402108">+33 06 37 40 21 08</a>
+    </p>
   </div>
 </template>

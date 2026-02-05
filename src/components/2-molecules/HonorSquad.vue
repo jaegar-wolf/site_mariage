@@ -7,6 +7,7 @@ import ruchelle from '@/assets/honorSquad/Ruchelle.jpg'
 import kenael from '@/assets/honorSquad/Kenael.png'
 import laurent from '@/assets/honorSquad/Laurent.jpg'
 import topher from '@/assets/honorSquad/Christopher.jpg'
+import sabrina from '@/assets/honorSquad/Sabrina.jpeg'
 
 import { useObserver, isMobile } from '@/composables'
 import { gsap } from 'gsap'
@@ -151,13 +152,17 @@ const defaultHonorSquadList: ImageAndName[] = [
 
 const witnessList = ref(defaultWitnessList)
 const honorSquadList = ref(defaultHonorSquadList)
+const weddingPInView = ref(false)
 
 const honorSquadListRef = useTemplateRef('honorSquad')
 const witnessListRef = useTemplateRef('witnessSquad')
+const weddingPlanneurRef = useTemplateRef('weddingPlanneur')
 
 useObserver(witnessList, witnessListRef, defaultWitnessList, [])
 
 useObserver(honorSquadList, honorSquadListRef, defaultHonorSquadList, [])
+
+useObserver(weddingPInView, weddingPlanneurRef, true, false)
 </script>
 
 <template>
@@ -191,7 +196,7 @@ useObserver(honorSquadList, honorSquadListRef, defaultHonorSquadList, [])
         </li>
       </transition-group>
     </div>
-    <div class="w-full min-h-220 flex flex-col items-center justify-center" ref="honorSquad">
+    <div class="w-full min-h-240 flex flex-col items-center justify-center" ref="honorSquad">
       <div class="font-plusjakartasans text-sm text-primary text-center mt-10">
         NOS DEMOISELLES ET GARÇONS D'HONNEUR
       </div>
@@ -218,6 +223,31 @@ useObserver(honorSquadList, honorSquadListRef, defaultHonorSquadList, [])
           </div>
         </li>
       </transition-group>
+    </div>
+
+    <div class="w-full min-h-110 flex flex-col items-center mt-20" ref="weddingPlanneur">
+      <div class="font-plusjakartasans text-sm text-primary text-center mb-4">
+        NOTRE WEDDING PLANNEUR
+      </div>
+      <transition
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @before-leave="beforeLeave"
+        @leave="leave"
+        css:false
+        appear
+      >
+        <div
+          v-if="weddingPInView"
+          class="md:h-100 md:max-w-70 md:min-w-70 shadow-lg text-white border-15 border-b-60"
+        >
+          <img :src="sabrina" alt="Sabrina" class="size-full object-cover" />
+
+          <div class="text-primary pt-3 text-center font-plusjakartasans font-bold">
+            Sabrina VARGAS
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>

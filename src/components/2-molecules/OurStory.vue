@@ -21,7 +21,7 @@ const chapters = [
     imageLeft: ourStoryImage1,
     imageRight: ourStoryImage2,
     date: '07-01-2020',
-    message: 'On a décidé <br/> de sortir ensemble',
+    message: "Nous avons décidé d'être ensemble",
   },
 
   {
