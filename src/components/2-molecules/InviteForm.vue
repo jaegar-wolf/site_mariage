@@ -62,7 +62,7 @@ const btnClass = isMobile() ? 'btn-primary' : 'btn-base-200'
 const cachedGuests: Guest[] = []
 
 const changeNumberOfGuest = (numberOfGuests: number) => {
-  formData.numberOfGuests = numberOfGuests
+  formData.numberOfGuests = numberOfGuests <= 6 ? numberOfGuests : 6
   const targetLength = numberOfGuests - 1
 
   // Sauvegarde les données actuelles dans le cache
@@ -74,7 +74,7 @@ const changeNumberOfGuest = (numberOfGuests: number) => {
     formData.guestList = []
   } else {
     const newList: Guest[] = []
-    for (let i = 0; i < targetLength; i++) {
+    for (let i = 0; i < targetLength && i < 7; i++) {
       newList.push(
         cachedGuests[i] || {
           firstName: '',
